@@ -34,3 +34,13 @@ class ExistingRelationshipForm(forms.Form):
         choices=Relationship.RELATIONSHIP_CHOICES,
         label="Relationship Type"
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        from_person = cleaned_data.get("from_person")
+        to_person = cleaned_data.get("to_person")
+
+        if from_person and to_person and from_person == to_person:
+            raise forms.ValidationError("A person cannot have a relationship with themselves.")
+
+        return cleaned_data
