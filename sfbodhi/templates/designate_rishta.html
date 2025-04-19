@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Relationship Form</title>
+    <title>Designate Rishta</title>
 </head>
 <body>
-    <h1>Enter Relationship</h1>
+    <h1>Designate a Relationship</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">Create Relationship</button>
     </form>
 </body>
 </html>
