@@ -1,0 +1,4 @@
+Hi mom you should be able to see working requirements here:
+1) Basic WebApp
+2) Data Entry
+3) Data Parse Logic
