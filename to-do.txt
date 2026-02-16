@@ -1,0 +1,4 @@
+1) parse x formation (overlapping parent/sibling/partner) for family units
+2) visual hierarchy (parents drawn on top)
+3) confirmation on person creation
+4) graph landing page on all method pages (fast redirect)

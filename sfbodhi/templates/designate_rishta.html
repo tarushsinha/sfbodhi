@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Designate Rishta</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        .form-errors {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Designate a Relationship</h1>
+    <form method="post">
+        {% csrf_token %}
+    
+        {% if form.non_field_errors %}
+          <div class="form-errors">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+
+        {% if messages %}
+        {% with messages|slice:"-1:" as latest %}
+            {% for message in latest %}
+            <ul class="messages">
+                <li class="{{ message.tags }}">{{ message }}</li>
+            </ul>
+            {% endfor %}
+        {% endwith %}
+        {% endif %}
+    
+        <p>
+            {{ form.from_person.label_tag }}<br>
+            {{ form.from_person }}
+            {{ form.from_person.errors }}
+        </p>
+        <p>
+            {{ form.to_person.label_tag }}<br>
+            {{ form.to_person }}
+            {{ form.to_person.errors }}
+        </p>
+        <p>
+            {{ form.relationship_type.label_tag }}<br>
+            {{ form.relationship_type }}
+            {{ form.relationship_type.errors }}
+        </p>
+    
+        <button type="submit">Create Relationship</button>
+    </form>
+</body>
+</html>
